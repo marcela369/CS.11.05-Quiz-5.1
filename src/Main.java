@@ -8,10 +8,22 @@ public class Main {
      * zip(myArray1, myArray2) → {1,3,5,7,9,2,4,6,8,10,12,14,16}
      */
     public static int[] combine(int[] array1, int[] array2) {
+        int[] combinedArray = new int[array1.length + array2.length];
+        int sum = 0;
 
-        return null;
+        for (int num : array1) {
+            combinedArray[sum] = num;
+            sum++;
+        }
 
+        for (int num : array2) {
+            combinedArray[sum] = num;
+            sum++;
+        }
+
+        return combinedArray;
     }
+
 
     /**
      * Given two arrays of integers of equal length, write a method called zip that zips together all elements in each array into one larger array.
@@ -21,10 +33,17 @@ public class Main {
      * zip(myArray1, myArray2) → {1,2,3,4,5,6,7,8,9,10}
      */
     public static int[] zip(int[] array1, int[] array2) {
+        int l = array1.length;
+        int[] result = new int[l * 2];
 
-        return null;
+        for (int i = 0, j = 0; i < l; i++, j += 2) {
+            result[j] = array1[i];
+            result[j + 1] = array2[i];
+        }
 
+        return result;
     }
+
 
     /**
      * Given two arrays of integers of equal length, write a method called product that multiplies each element in the first array by the element at the corresponding index in the second array.
@@ -35,9 +54,16 @@ public class Main {
      */
     public static int[] product(int[] array1, int[] array2) {
 
-        return null;
+        int length = array1.length;
+        int[] result = new int[length];
 
+        for (int i = 0; i < length; i++) {
+            result[i] = array1[i] * array2[i];
+        }
+
+        return result;
     }
+
 
     /**
      * Given an array of Strings, write a method called capitalCount that calculates the number of capital letters in each String and stores them into an array.
@@ -46,25 +72,40 @@ public class Main {
      * One of these methods (countCapitalLetters) will be a helper method and will perform the task of counting and returning how many capital letters are in a single word.
      * In other words, the method capitalCount will call (or use) the method countCapitalLetters in order to achieve the desired output.
      * Hint: You can use the statement Character.isAlphabetic( … ) to determine whether a character is an alphabetic character.
-     *
+     * <p>
      * Method: capitalCount
      * Helper method: countCapitalLetters
-     *
+     * <p>
      * Hint: 'A' = 65 and 'Z' = 90
-     *
+     * <p>
      * String[] words = {“Christmas”, “IS”, “comInG”, “!”};
      * capitalCount(words) → {1, 2, 2, 0}
      */
     public static int[] capitalCount(String[] words) {
 
-        return null;
+        int[] result = new int[words.length];
 
+        for (int i = 0; i < words.length; i++) {
+            result[i] = countCapitalLetters(words[i]);
+        }
+
+        return result;
     }
+
 
     public static int countCapitalLetters(String word) {
 
-        return 0;
+            int count = 0;
+
+            for (int i = 0; i < word.length(); i++) {
+                char c = word.charAt(i);
+                if (Character.isAlphabetic(c) && Character.isUpperCase(c)) {
+                    count++;
+                }
+            }
+
+            return count;
+
+        }
 
     }
-
-}
